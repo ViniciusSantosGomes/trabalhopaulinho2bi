@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Nota Final</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #f4f4f4;
+        }
+        input[type="number"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificação de Nota Final</h1>
+    <p>Digite sua nota final do ano letivo:</p>
+    <input type="number" id="nota" placeholder="Insira sua nota" min="0" max="10" step="0.1">
+    <button onclick="verificarNota()">Verificar</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function verificarNota() {
+            
+            var nota = document.getElementById('nota').value;
+
+          
+            if (nota === '' || isNaN(nota) || nota < 0 || nota > 10) {
+                alert('Por favor, insira uma nota válida entre 0 e 10.');
+                return;
+            }
+
+           
+            nota = parseFloat(nota);
+
+            
+            var mensagem;
+            if (nota >= 6) {
+                mensagem = "Aprovado";
+            } else if (nota > 4) {
+                mensagem = "Precisa fazer prova substitutiva";
+            } else {
+                mensagem = "Reprovado";
+            }
+
+           
+            var resultados = document.getElementById('resultados');
+            resultados.innerHTML = mensagem;
+        }
+    </script>
+      <script src="java6.js"></script>
+
+</body>
+</html>

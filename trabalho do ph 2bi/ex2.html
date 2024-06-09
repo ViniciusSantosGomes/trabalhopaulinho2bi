@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ingredientes para Omelete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Ingredientes para Omelete</h1>
+    <p>Digite o número de pessoas que irão comer omelete:</p>
+    <input type="number" id="numPessoas" min="1">
+    <button onclick="calcularIngredientes()">Calcular</button>
+
+    <div id="resultados"></div>
+
+    <script src="java2.js"></script>
+
+</body>
+</html>

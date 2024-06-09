@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparação de Números</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #f9f9f9;
+        }
+        input[type="number"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comparação de Números</h1>
+    <p>Digite dois números inteiros:</p>
+    <input type="number" id="numero1" placeholder="Primeiro número">
+    <input type="number" id="numero2" placeholder="Segundo número">
+    <button onclick="compararNumeros()">Comparar</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function compararNumeros() {
+           
+            var numero1 = document.getElementById('numero1').value;
+            var numero2 = document.getElementById('numero2').value;
+
+            
+            if (numero1 === '' || numero2 === '' || isNaN(numero1) || isNaN(numero2)) {
+                alert('Por favor, insira dois números inteiros válidos.');
+                return;
+            }
+
+            
+            numero1 = parseInt(numero1);
+            numero2 = parseInt(numero2);
+
+           
+            var mensagem;
+            if (numero1 > numero2) {
+                mensagem = "O primeiro número (" + numero1 + ") é maior que o segundo (" + numero2 + ").";
+            } else if (numero1 < numero2) {
+                mensagem = "O primeiro número (" + numero1 + ") é menor que o segundo (" + numero2 + ").";
+            } else {
+                mensagem = "O primeiro número (" + numero1 + ") é igual ao segundo (" + numero2 + ").";
+            }
+
+            
+            var resultados = document.getElementById('resultados');
+            resultados.innerHTML = mensagem;
+        }
+    </script>
+    <script src="java7.js"></script>
+</body>
+</html>

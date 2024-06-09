@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação por Idade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        input[type="text"], input[type="number"] {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Classificação por Idade</h1>
+    <p>Digite o nome e o ano de nascimento das 3 pessoas:</p>
+    
+    <p>Pessoa 1:</p>
+    <input type="text" id="nome1" placeholder="Nome">
+    <input type="number" id="anoNascimento1" placeholder="Ano de Nascimento" min="1900" max="2024">
+    
+    <p>Pessoa 2:</p>
+    <input type="text" id="nome2" placeholder="Nome">
+    <input type="number" id="anoNascimento2" placeholder="Ano de Nascimento" min="1900" max="2024">
+    
+    <p>Pessoa 3:</p>
+    <input type="text" id="nome3" placeholder="Nome">
+    <input type="number" id="anoNascimento3" placeholder="Ano de Nascimento" min="1900" max="2024">
+    
+    <button onclick="classificarPorIdade()">Classificar</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function classificarPorIdade() {
+          
+            var pessoas = [
+                {
+                    nome: document.getElementById('nome1').value,
+                    anoNascimento: document.getElementById('anoNascimento1').value
+                },
+                {
+                    nome: document.getElementById('nome2').value,
+                    anoNascimento: document.getElementById('anoNascimento2').value
+                },
+                {
+                    nome: document.getElementById('nome3').value,
+                    anoNascimento: document.getElementById('anoNascimento3').value
+                }
+            ];
+
+            
+            for (var i = 0; i < pessoas.length; i++) {
+                if (pessoas[i].nome === '' || pessoas[i].anoNascimento === '' || isNaN(pessoas[i].anoNascimento)) {
+                    alert('Por favor, insira um nome e um ano de nascimento válidos para todas as pessoas.');
+                    return;
+                }
+            }
+
+           
+            var anoAtual = new Date().getFullYear();
+            for (var i = 0; i < pessoas.length; i++) {
+                pessoas[i].idade = anoAtual - parseInt(pessoas[i].anoNascimento);
+            }
+
+            
+            pessoas.sort(function(a, b) {
+                return b.idade - a.idade;
+            });
+
+           
+            var resultados = document.getElementById('resultados');
+            resultados.innerHTML = '<p>Pessoa mais velha: ' + pessoas[0].nome + ' - ' + pessoas[0].idade + ' anos</p>';
+            resultados.innerHTML += '<p>Segunda pessoa mais velha: ' + pessoas[1].nome + ' - ' + pessoas[1].idade + ' anos</p>';
+            resultados.innerHTML += '<p>Terceira pessoa mais velha: ' + pessoas[2].nome + ' - ' + pessoas[2].idade + ' anos</p>';
+        }
+    </script>
+      <script src="java5.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Metas de Venda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #f9f9f9;
+        }
+        input[type="number"] {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificação de Metas de Venda</h1>
+    <p>Digite os valores para venda, meta e meta mínima:</p>
+    <input type="number" id="valorVendido" placeholder="Valor vendido" step="0.01">
+    <input type="number" id="meta" placeholder="Meta do mês" step="0.01">
+    <input type="number" id="metaMinima" placeholder="Meta mínima do mês" step="0.01">
+    <button onclick="verificarMetas()">Verificar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function verificarMetas() {
+          
+            var valorVendido = document.getElementById('valorVendido').value;
+            var meta = document.getElementById('meta').value;
+            var metaMinima = document.getElementById('metaMinima').value;
+
+            if (valorVendido === '' || meta === '' || metaMinima === '' || isNaN(valorVendido) || isNaN(meta) || isNaN(metaMinima) || valorVendido < 0 || meta <= 0 || metaMinima <= 0) {
+                alert('Por favor, insira valores válidos para todos os campos.');
+                return;
+            }
+
+          
+            valorVendido = parseFloat(valorVendido);
+            meta = parseFloat(meta);
+            metaMinima = parseFloat(metaMinima);
+
+            
+            var status;
+            if (valorVendido >= meta) {
+                status = "Você atingiu a meta!";
+            } else if (valorVendido >= metaMinima) {
+                status = "Você atingiu a meta mínima.";
+            } else {
+                status = "Você não atingiu nenhuma das metas.";
+            }
+
+           
+            var percentualMeta = (valorVendido / meta) * 100;
+            var percentualMetaMinima = (valorVendido / metaMinima) * 100;
+
+           
+            var mensagem = status + "<br>" +
+                           "Percentual de atingimento da meta: " + percentualMeta.toFixed(2) + "%<br>" +
+                           "Percentual de atingimento da meta mínima: " + percentualMetaMinima.toFixed(2) + "%";
+
+            
+            var resultado = document.getElementById('resultado');
+            resultado.innerHTML = mensagem;
+        }
+    </script>
+    <script src="java10.js"></script>
+</body>
+</html>

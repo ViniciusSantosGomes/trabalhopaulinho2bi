@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pedido de Pizza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        input[type="text"], input[type="number"] {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Pedido de Pizza</h1>
+    <p>Digite os sabores de pizza:</p>
+    <input type="text" id="sabor1" placeholder="Sabor 1">
+    <input type="text" id="sabor2" placeholder="Sabor 2">
+    <input type="text" id="sabor3" placeholder="Sabor 3">
+    <input type="text" id="sabor4" placeholder="Sabor 4">
+    <p>Quantos refrigerantes você quer?</p>
+    <input type="number" id="refrigerantes" min="0" placeholder="Número de refrigerantes">
+    <button onclick="calcularPedido()">Calcular Total</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function calcularPedido() {
+            
+            var sabor1 = document.getElementById('sabor1').value;
+            var sabor2 = document.getElementById('sabor2').value;
+            var sabor3 = document.getElementById('sabor3').value;
+            var sabor4 = document.getElementById('sabor4').value;
+
+            var refrigerantes = document.getElementById('refrigerantes').value;
+
+            
+            if (!sabor1 || !sabor2 || !sabor3 || !sabor4) {
+                alert('Por favor, insira todos os sabores de pizza.');
+                return;
+            }
+            
+            if (refrigerantes === '' || isNaN(refrigerantes) || refrigerantes < 0) {
+                alert('Por favor, insira uma quantidade válida de refrigerantes.');
+                return;
+            }
+
+           
+            refrigerantes = parseInt(refrigerantes);
+
+            
+            var precoPizza = 12.00;
+            var precoRefrigerante = 7.00;
+            var totalPizzas = 4 * precoPizza;
+            var totalRefrigerantes = refrigerantes * precoRefrigerante;
+            var valorTotal = totalPizzas + totalRefrigerantes;
+
+            
+            var resultados = document.getElementById('resultados');
+            resultados.innerHTML = '<p>Sabores escolhidos:</p>';
+            resultados.innerHTML += '<ul>';
+            resultados.innerHTML += '<li>' + sabor1 + '</li>';
+            resultados.innerHTML += '<li>' + sabor2 + '</li>';
+            resultados.innerHTML += '<li>' + sabor3 + '</li>';
+            resultados.innerHTML += '<li>' + sabor4 + '</li>';
+            resultados.innerHTML += '</ul>';
+            resultados.innerHTML += '<p>Quantidade de refrigerantes: ' + refrigerantes + '</p>';
+            resultados.innerHTML += '<p>Valor total a pagar: R$ ' + valorTotal.toFixed(2) + '</p>';
+        }
+    </script>
+        <script src="java4.js"></script>
+
+</body>
+</html>

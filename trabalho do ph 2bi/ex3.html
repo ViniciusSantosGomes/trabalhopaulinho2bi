@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Operações Matemáticas</h1>
+    <p>Digite dois números inteiros:</p>
+    <input type="number" id="numero1">
+    <input type="number" id="numero2">
+    <br>
+    <button onclick="calcularOperacoes()">Calcular</button>
+
+    <div id="resultados"></div>
+
+    <script>
+        function calcularOperacoes() {
+           
+            var numero1 = document.getElementById('numero1').value;
+            var numero2 = document.getElementById('numero2').value;
+            
+            
+            if (numero1 === '' || isNaN(numero1) || numero2 === '' || isNaN(numero2)) {
+                alert('Por favor, insira dois números inteiros válidos.');
+                return;
+            }
+
+           s
+            numero1 = parseInt(numero1);
+            numero2 = parseInt(numero2);
+
+            
+            var soma = numero1 + numero2;
+            var subtracao = numero1 - numero2;
+            var multiplicacao = numero1 * numero2;
+            var divisao = numero1 / numero2;
+
+           
+            var resultados = document.getElementById('resultados');
+            resultados.innerHTML = '<p>Soma: ' + soma + '</p>';
+            resultados.innerHTML += '<p>Subtração: ' + subtracao + '</p>';
+            resultados.innerHTML += '<p>Multiplicação: ' + multiplicacao + '</p>';
+            resultados.innerHTML += '<p>Divisão: ' + divisao.toFixed(2) + '</p>';
+        }
+    </script>
+    <script src="java3.js"></script>
+</body>
+</html>

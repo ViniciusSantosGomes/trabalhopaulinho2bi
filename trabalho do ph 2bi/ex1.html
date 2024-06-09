@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Cotação do Dólar</title>
+</head>
+<body>
+    <h1>Calculadora de Cotação do Dólar</h1>
+    <p>Digite a cotação atual do dólar:</p>
+    <input type="number" id="cotacao" step="0.01">
+    <button onclick="calcular()">Calcular</button>
+
+    <h2>Resultados:</h2>
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="resultado5"></p>
+    <p id="resultado10"></p>
+
+    <script>
+        function calcular() {
+            var cotacaoAtual = document.getElementById('cotacao').value;
+            
+            
+            if (cotacaoAtual === '' || isNaN(cotacaoAtual)) {
+                alert('Por favor, insira um valor válido para a cotação do dólar.');
+                return;
+            }
+
+           
+            cotacaoAtual = parseFloat(cotacaoAtual);
+
+           
+            var valor1 = cotacaoAtual * 1.01;
+            var valor2 = cotacaoAtual * 1.02; 
+            var valor5 = cotacaoAtual * 1.05; 
+            var valor10 = cotacaoAtual * 1.10; 
+
+            document.getElementById('resultado1').innerText = 'Se a cotação subir 1%, o valor será de $' + valor1.toFixed(2);
+            document.getElementById('resultado2').innerText = 'Se a cotação subir 2%, o valor será de $' + valor2.toFixed(2);
+            document.getElementById('resultado5').innerText = 'Se a cotação subir 5%, o valor será de $' + valor5.toFixed(2);
+            document.getElementById('resultado10').innerText = 'Se a cotação subir 10%, o valor será de $' + valor10.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+
+
+<script src="java1.js"></script>
+
+
+</body>
+</html>
